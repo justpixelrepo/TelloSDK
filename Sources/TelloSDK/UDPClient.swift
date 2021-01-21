@@ -51,6 +51,8 @@ public final class UDPClient {
         connection.send(content: string.data(using: .utf8), completion: completion.contentProcessed(({ (NWError) in
             if (NWError == nil) {
                 finished(.success)
+                self.receive()
+                
             } else {
                 finished(.failure("#### ERROR! Error when data (Type: Data) sending. NWError: \n \(NWError!)"))
             }
@@ -61,6 +63,7 @@ public final class UDPClient {
         connection.receiveMessage { (data, context, isComplete, error) in
             if (isComplete) {
                 print("#### Receive is complete")
+                
                 if (data != nil) {
                     let backToString = String(decoding: data!, as: UTF8.self)
                     print("#### Received message: \(backToString)")
