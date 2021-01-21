@@ -29,4 +29,13 @@ final class TelloSDKTests: XCTestCase {
         wait(for: [exp], timeout: 5.0)
         
     }
+    
+    func testTello_Instance_withStart_takeOff_flyForward_100cm_andLand() {
+        let tello = Tello()
+        tello.send(.start)
+        tello.send(.takeoff)
+        tello.send(.fly(.forward, cm: 100))
+        tello.send(.land)
+        
+    }
 }

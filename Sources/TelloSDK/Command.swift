@@ -16,7 +16,7 @@ public enum Command {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
-            case. fly(<#T##move: Move##Move#>, cm: <#T##UInt#>)
+            case let .fly(move, cm) : return "\(move.rawValue) \(cm)"
             case .land: return "land"
             case .video(let isOn): return isOn ? "streamon" : "streamoff"
             default : return "command"
@@ -29,20 +29,34 @@ public enum Command {
         case left
         case right
     }
+    
     public enum Position {
         case x
         case y
         case z
     }
+    
     public enum Rotation {
         case right
         case left
     }
-    public enum Move {
+    
+    public enum Move: RawRepresentable {
         case forward
         case back
         case position(_ position: Position)
         case direction(_ direction: Direction)
+        
+        public typealias RawValue = String
+        public init?(rawValue: RawValue) { return nil }
+        
+        public var rawValue: RawValue {
+            switch self {
+            case .forward: return "forward"
+            case .back: return "back"
+            default: return "no set"
+            }
+        }
     }
     
 
