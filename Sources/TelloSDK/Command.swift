@@ -16,6 +16,7 @@ public enum Command {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
+            case. fly(<#T##move: Move##Move#>, cm: <#T##UInt#>)
             case .land: return "land"
             case .video(let isOn): return isOn ? "streamon" : "streamoff"
             default : return "command"

@@ -18,12 +18,13 @@ final class TelloSDKTests: XCTestCase {
     func testTello_Instance_withStart_andTakeOff() {
         let tello = Tello()
         let exp = expectation(description: "should connect to drone")
-    //    tello.send(.start)
+        tello.send(.start)
         tello.send(.takeoff) { success in
             XCTAssertEqual(success, .error)
             
             exp.fulfill()
         }
+        
         
         wait(for: [exp], timeout: 5.0)
         
