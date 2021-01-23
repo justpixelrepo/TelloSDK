@@ -13,7 +13,7 @@ public enum Command {
     case flip(_ position: Position)
     case rotate(_ position: Position) //between 1-360
    
-    var value: String {
+    public var value: String {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
