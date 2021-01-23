@@ -19,6 +19,10 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.video().value, "streamon")
     }
     
+    func test_video_is_off() {
+        XCTAssertEqual(Command.video(false).value, "streamoff")
+    }
+    
     
     
 }
