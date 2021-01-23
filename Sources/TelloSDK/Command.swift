@@ -28,11 +28,24 @@ public enum Command: RawRepresentable {
         }
     }
     
-    public enum Direction {
+    public enum Direction: RawRepresentable {
         case up
         case down
         case left
         case right
+        
+        public typealias RawValue = String
+        public init?(rawValue: RawValue) { return nil }
+        
+        public var rawValue: RawValue {
+            switch self {
+            case .up: return "up"
+            case .down: return "down"
+            case .left: return "left"
+            case .right: return "right"
+            }
+        }
+        
     }
     
     public enum Position {
@@ -59,6 +72,7 @@ public enum Command: RawRepresentable {
             switch self {
             case .forward: return "forward"
             case .back: return "back"
+            case .direction(.up): return "up"
             default: return "no set"
             }
         }

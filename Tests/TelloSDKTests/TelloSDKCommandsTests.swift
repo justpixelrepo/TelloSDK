@@ -27,6 +27,9 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.emergency.rawValue, "emergency")
     }
     
+    func test_fly_up_20_cm() {
+        XCTAssertEqual(Command.fly(.direction(.up), cm: 20).rawValue, "up 20")
+    }
     
     
 }
