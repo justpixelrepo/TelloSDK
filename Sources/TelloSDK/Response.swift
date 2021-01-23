@@ -1,5 +1,5 @@
 
-public enum Response: String {
-    case ok
-    case error
+public extension String {
+    static let ok = "ok"
+    static let error = "error"
 }

@@ -11,6 +11,7 @@ public enum Command {
 //    case move(_ move: Move, cm: UInt)
 //    case position(_ position: Position, cm: UInt)
     case flip(_ position: Position)
+    case rotate(_ position: Position) //between 1-360
    
     var value: String {
             switch self {

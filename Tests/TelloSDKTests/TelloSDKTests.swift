@@ -15,7 +15,7 @@ final class TelloSDKTests: XCTestCase {
         wait(for: [exp], timeout: 5.0)
     }
 
-    func testTello_Instance_withStart_andTakeOff() {
+    func testTello_Instance_withStart_takeOff_andLand() {
         let tello = Tello()
         let exp = expectation(description: "should connect to drone")
         tello.send(.start)
