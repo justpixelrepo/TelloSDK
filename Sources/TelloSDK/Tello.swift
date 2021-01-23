@@ -24,7 +24,7 @@ public final class Tello: CustomStringConvertible {
     }
     
     public func send(_ command: Command, finished: (String) -> () = { _ in}) {
-        client.send(string: command.value) { result in
+        client.send(string: command.rawValue) { result in
             print(result)
         }
     }
