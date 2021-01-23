@@ -7,6 +7,8 @@ final class TelloSDKCommandsTests: XCTestCase {
        XCTAssertEqual(Command.start.value, "command")
     }
     
-
+    func test_takeoff_command() {
+       XCTAssertEqual(Command.takeoff.value, "takeoff")
+    }
     
 }
