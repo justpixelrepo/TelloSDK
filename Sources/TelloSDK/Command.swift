@@ -1,6 +1,9 @@
 import Foundation
 
-public enum Command {
+public enum Command: RawRepresentable {
+    
+    public typealias RawValue = String
+    public init?(rawValue: RawValue) { return nil }
     
     case start
     case takeoff
@@ -13,13 +16,14 @@ public enum Command {
     case flip(_ position: Position)
     case rotate(_ position: Position) //between 1-360
    
-    public var value: String {
+    public var rawValue: RawValue {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
             case let .fly(move, cm) : return "\(move.rawValue) \(cm)"
             case .land: return "land"
             case .video(let isOn): return isOn ? "streamon" : "streamoff"
+            case .emergency: return "emergency"
             default : return "command"
         }
     }
