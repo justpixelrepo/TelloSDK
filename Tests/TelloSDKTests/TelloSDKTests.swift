@@ -25,7 +25,7 @@ final class TelloSDKTests: XCTestCase {
             exp.fulfill()
         }
         
-        
+     tello.send(.emergency)
         wait(for: [exp], timeout: 5.0)
         
     }
@@ -34,8 +34,8 @@ final class TelloSDKTests: XCTestCase {
         let tello = Tello()
         tello.send(.start)
         tello.send(.takeoff)
-        tello.send(.fly(.forward, cm: 100))
-        tello.send(.land)
+        tello.send(.fly(.forward, cm: 30))
+        tello.send(.emergency)
         
     }
 }
