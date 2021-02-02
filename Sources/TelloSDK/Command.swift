@@ -79,6 +79,7 @@ public enum Command: RawRepresentable {
             case .forward: return "forward"
             case .back: return "back"
             case .direction(.up): return "up"
+            case .direction(.down): return "down"
             default: return "no set"
             }
         }
