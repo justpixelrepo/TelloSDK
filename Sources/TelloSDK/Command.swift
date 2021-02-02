@@ -19,19 +19,15 @@ public enum Command: RawRepresentable {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
-            case let .fly(move, cm) : return "\(move.rawValue) \(cm)"
-            case let .rotate(rotation, cm) : return "\(rotation.rawValue) \(cm)"
+            case let .fly(move, cm) :
+                return "\(move.rawValue) \(20...500 ~= cm ? cm : 20)"
+            case let .rotate(rotation, degrees) :
+                return "\(rotation.rawValue) \(1...360 ~= degrees ? degrees : 90)"
             case .land: return "land"
             case .video(let isOn): return isOn ? "streamon" : "streamoff"
             case .emergency: return "emergency"
             default : return "command"
         }
-    }
-    
-    private func range(cm: Int) -> Int {
-        let rotationRange = 1...360
-        let flyRange = 20...500
-        return 10...100 ~= cm ? cm : 20
     }
     
     public enum Direction: RawRepresentable {
