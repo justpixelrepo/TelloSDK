@@ -12,21 +12,24 @@ public enum Command: RawRepresentable {
     case emergency
     case fly(_ move: Move, cm: UInt)
     case rotate(_ rotation: Rotation, degrees: UInt)
-//    case position(_ position: Position, cm: UInt)
-    case flip(_ position: Position)
-   
+    case flip(_ flip: Flip)
+    case stop
+    case speed(cm: UInt)
+    
     public var rawValue: RawValue {
-            switch self {
-            case .start: return "command"
-            case .takeoff: return "takeoff"
-            case let .fly(move, cm) :
-                return "\(move.rawValue) \(20...500 ~= cm ? cm : 20)"
-            case let .rotate(rotation, degrees) :
-                return "\(rotation.rawValue) \(1...360 ~= degrees ? degrees : 90)"
-            case .land: return "land"
-            case .video(let isOn): return isOn ? "streamon" : "streamoff"
-            case .emergency: return "emergency"
-            default : return "command"
+        switch self {
+        case .start: return "command"
+        case .takeoff: return "takeoff"
+        case let .fly(move, cm) :
+            return "\(move.rawValue) \(20...500 ~= cm ? cm : 20)"
+        case let .rotate(rotation, degrees) :
+            return "\(rotation.rawValue) \(1...360 ~= degrees ? degrees : 90)"
+        case .flip(let flip) : return "\(flip.rawValue)"
+        case .land: return "land"
+        case .video(let isOn): return isOn ? "streamon" : "streamoff"
+        case .emergency: return "emergency"
+        case .stop: return "stop"
+        case .speed(let cm) : return "\(10...100 ~= cm ? cm : 10)"
         }
     }
     
@@ -100,5 +103,5 @@ public enum Command: RawRepresentable {
         }
     }
     
-
+    
 }
