@@ -74,4 +74,10 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.flip(.back).rawValue, "b")
     }
     
+    func test_stop() {
+        XCTAssertEqual(Command.stop.rawValue, "stop")
+    }
+    
+  
+    
 }
