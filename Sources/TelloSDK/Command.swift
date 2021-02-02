@@ -56,6 +56,13 @@ public enum Command: RawRepresentable {
         case z
     }
     
+    public enum Flip: String {
+        case left = "l"
+        case right = "r"
+        case forward = "f"
+        case back = "b"
+    }
+    
     public enum Rotation: RawRepresentable {
         case right
         case left
@@ -88,7 +95,7 @@ public enum Command: RawRepresentable {
             case .direction(.down): return "down"
             case .direction(.left): return "left"
             case .direction(.right): return "right"
-            default: return "no set"
+            default: return "forward"
             }
         }
     }
