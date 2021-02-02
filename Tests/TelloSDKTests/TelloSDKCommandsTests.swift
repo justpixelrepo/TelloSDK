@@ -63,4 +63,8 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.rotate(.left, degrees: 90).rawValue, "ccw 90")
     }
     
+    func test_rotate_right_doesnt_exceed_361degrees_and_resets_to_90degrees() {
+        XCTAssertEqual(Command.rotate(.right, degrees: 361).rawValue, "cw 90")
+    }
+    
 }
