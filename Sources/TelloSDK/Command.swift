@@ -29,7 +29,7 @@ public enum Command: RawRepresentable {
         case .video(let isOn): return isOn ? "streamon" : "streamoff"
         case .emergency: return "emergency"
         case .stop: return "stop"
-        case .speed(let cm) : return "\(10...100 ~= cm ? cm : 10)"
+        case .speed(let cm) : return "speed \(10...100 ~= cm ? cm : 10)"
         }
     }
     

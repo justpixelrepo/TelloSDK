@@ -78,6 +78,8 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.stop.rawValue, "stop")
     }
     
-  
+    func test_set_speed_to_10cm() {
+        XCTAssertEqual(Command.speed(cm: 10).rawValue, "speed 10")
+    }
     
 }
