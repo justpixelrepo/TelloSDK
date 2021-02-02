@@ -47,4 +47,12 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.fly(.forward, cm: 20).rawValue, "forward 20")
     }
     
+    func test_fly_back_20_cm() {
+        XCTAssertEqual(Command.fly(.back, cm: 20).rawValue, "back 20")
+    }
+    
+    func test_rotate_right_90_degrees() {
+        XCTAssertEqual(Command.rotate(.right, degrees: 90).rawValue, "cw 90")
+    }
+    
 }

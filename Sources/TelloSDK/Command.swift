@@ -11,16 +11,16 @@ public enum Command: RawRepresentable {
     case video(_ isOn: Bool = true)
     case emergency
     case fly(_ move: Move, cm: UInt)
-//    case move(_ move: Move, cm: UInt)
+    case rotate(_ rotation: Rotation, degrees: UInt)
 //    case position(_ position: Position, cm: UInt)
     case flip(_ position: Position)
-    case rotate(_ position: Position) //between 1-360
    
     public var rawValue: RawValue {
             switch self {
             case .start: return "command"
             case .takeoff: return "takeoff"
             case let .fly(move, cm) : return "\(move.rawValue) \(cm)"
+            case let .rotate(rotation, cm) : return "\(rotation.rawValue) \(cm)"
             case .land: return "land"
             case .video(let isOn): return isOn ? "streamon" : "streamoff"
             case .emergency: return "emergency"
@@ -60,9 +60,19 @@ public enum Command: RawRepresentable {
         case z
     }
     
-    public enum Rotation {
+    public enum Rotation: RawRepresentable {
         case right
         case left
+        
+        public typealias RawValue = String
+        public init?(rawValue: RawValue) { return nil }
+        
+        public var rawValue: RawValue {
+            switch self {
+            case .left: return "ccw"
+            case .right: return "cw"
+            }
+        }
     }
     
     public enum Move: RawRepresentable {
