@@ -28,6 +28,12 @@ public enum Command: RawRepresentable {
         }
     }
     
+    private func range(cm: Int) -> Int {
+        let rotationRange = 1...360
+        let flyRange = 20...500
+        return 10...100 ~= cm ? cm : 20
+    }
+    
     public enum Direction: RawRepresentable {
         case up
         case down
