@@ -7,7 +7,7 @@ public enum Result: CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case .success: return "success"
+        case .success: return "ok"
         default: return "error"
         }
     }
