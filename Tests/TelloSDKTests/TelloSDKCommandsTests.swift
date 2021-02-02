@@ -27,39 +27,39 @@ final class TelloSDKCommandsTests: XCTestCase {
         XCTAssertEqual(Command.emergency.rawValue, "emergency")
     }
     
-    func test_fly_up_20_cm() {
+    func test_fly_up_20cm() {
         XCTAssertEqual(Command.fly(.direction(.up), cm: 20).rawValue, "up 20")
     }
     
-    func test_fly_down_20_cm() {
+    func test_fly_down_20cm() {
         XCTAssertEqual(Command.fly(.direction(.down), cm: 20).rawValue, "down 20")
     }
     
-    func test_fly_left_20_cm() {
+    func test_fly_left_20cm() {
         XCTAssertEqual(Command.fly(.direction(.left), cm: 20).rawValue, "left 20")
     }
     
-    func test_fly_right_20_cm() {
+    func test_fly_right_20cm() {
         XCTAssertEqual(Command.fly(.direction(.right), cm: 20).rawValue, "right 20")
     }
     
-    func test_fly_right_501_cm() {
+    func test_fly_right_doesnt_exceed_501cm_and_resets_to_20cm() {
         XCTAssertEqual(Command.fly(.direction(.right), cm: 501).rawValue, "right 20")
     }
     
-    func test_fly_forward_20_cm() {
+    func test_fly_forward_20cm() {
         XCTAssertEqual(Command.fly(.forward, cm: 20).rawValue, "forward 20")
     }
     
-    func test_fly_back_20_cm() {
+    func test_fly_back_20cm() {
         XCTAssertEqual(Command.fly(.back, cm: 20).rawValue, "back 20")
     }
     
-    func test_rotate_right_90_degrees() {
+    func test_rotate_right_90degrees() {
         XCTAssertEqual(Command.rotate(.right, degrees: 90).rawValue, "cw 90")
     }
     
-    func test_rotate_left_90_degrees() {
+    func test_rotate_left_90degrees() {
         XCTAssertEqual(Command.rotate(.left, degrees: 90).rawValue, "ccw 90")
     }
     
