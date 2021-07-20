@@ -1,7 +1,12 @@
 import XCTest
 import TelloSDK
 
-final class TelloSDKCommandsTests: XCTestCase {
+extension XCTestCase {
+    
+}
+
+final class CommandsRawValueTests: XCTestCase {
+    
     //validated takeoff command
     func test_start() {
        XCTAssertEqual(Command.start.rawValue, "command")
