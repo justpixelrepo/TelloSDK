@@ -18,7 +18,12 @@ final class BasicDroneControlTests: XCTestCase {
     }
     
     func test_multiple_commands() {
-        tello.send([.takeoff, .wait(), .land])
+        var count = 0
+        tello.send([.takeoff, .land]) {
+            count += 1
+            XCTAssertEqual(count, 1)
+            XCTAssertEqual($0, "ok")
+        }
     }
     
 //    func test_multiple_commands() {
