@@ -23,10 +23,21 @@ public final class Tello: CustomStringConvertible {
         self.init(port: 8889)
     }
     
-    public func send(_ command: Command, finished: (String) -> () = { _ in}) {
+    public func send(_ command: Command, finished: @escaping (String) -> () = { _ in}) {
         client.send(string: command.rawValue) { result in
-            print(result)
+            finished("ok")
         }
+    }
+    
+    public func send(_ commands: [Command], finished: @escaping (String) -> () = { _ in}) {
+        //run all commands
+        //exit when a command fails
+        _ = commands.map {
+            client.send(string: $0.rawValue) { result in
+                finished("ok")
+            }
+        }
+      
     }
     
 }
