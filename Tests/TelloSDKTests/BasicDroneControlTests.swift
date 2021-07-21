@@ -26,6 +26,35 @@ final class BasicDroneControlTests: XCTestCase {
         }
     }
     
+    func test_fly_up_and_down() {
+        var count = 0
+        tello.send([
+            .takeoff,
+            .fly(.direction(.up), cm: 200),
+            .fly(.direction(.down), cm: 200),
+            .land
+        ]) {
+            count += 1
+            XCTAssertEqual(count, 1)
+            XCTAssertEqual($0, "ok")
+        }
+    }
+    
+    func test_fly_forward_and_back() {
+        var count = 0
+        tello.send([
+            .start,
+            .takeoff,
+            .fly(.forward, cm: 200),
+            .fly(.back, cm: 200),
+            .land
+        ]) {
+            count += 1
+            XCTAssertEqual(count, 1)
+            XCTAssertEqual($0, "ok")
+        }
+    }
+    
 //    func test_multiple_commands() {
 //        tello.send {
 //            takeoff

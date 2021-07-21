@@ -1,7 +1,7 @@
 import Foundation
 import Network
 
-public enum Result: CustomStringConvertible {
+public enum Result: Equatable, CustomStringConvertible {
     case success
     case failure(String)
     
